@@ -2,7 +2,7 @@ package io.jababrains.springbootstarter.topic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.*;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -18,10 +18,32 @@ public class TopicService {
 			));
 	
 	public List<Topic> getAllTopics(){
+		
 		return topics;
 	}
 	
-	public Topic getTopic(String id) {
+
+	public Topic getTopic(String id) throws DefaultExceptionHandler{
+		
+		if(id.equalsIgnoreCase("Student1")) {
+			throw new RuntimeException("This is a Runtime Error,Shashank !");
+		}
+		else if(id.equalsIgnoreCase("Student2")) {
+			throw new RecordNotFoundException("Record not found");
+		}
+		else {
+			
+		}
+
+//		try {
+//			int x = 10/0;
+//		}
+//		catch(Exception e)
+//		{
+//			throw new DefaultExceptionHandler();
+//		}
+//		
+
 		return topics.stream().filter(t -> t.getId().equals(id)).findFirst().get();	
 	}
 	

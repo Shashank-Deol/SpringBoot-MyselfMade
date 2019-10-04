@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import io.jababrains.springbootstarter.constantsdeclaration.AllConstantsDeclaration;
 import io.jababrains.springbootstarter.utilityclass.UtilityClass;
@@ -29,8 +31,9 @@ public class TopicController {
 	@RequestMapping(value="/topics")
 	public List<Topic> getAllTopics() {
 		return topicservice.getAllTopics();
-	}
+		}
 	
+
 /*
 	@RequestMapping("/topics/spring1")
 	public Topic getTopic1(String id) {
@@ -39,7 +42,7 @@ public class TopicController {
 */
 	
 	@RequestMapping("/topics/{id}")
-	public Topic getTopic(@PathVariable String id) {
+	public Topic getTopic(@PathVariable String id) throws DefaultExceptionHandler{
 		return topicservice.getTopic(id);
 		//System.out.println(utility.changeToBold(id));
 		//System.out.println(acd.age);
